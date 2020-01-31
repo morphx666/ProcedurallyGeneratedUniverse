@@ -84,28 +84,70 @@ namespace ProcedurallyGeneratedUniverse {
             galaxy = new Galaxy();
             movement = Direction.None;
 
+            // Although it is not as smooth, this is by far the best implementation...
             Task.Run(() => {
-                long curTicks;
-                float inc;
-
                 while(true) {
-                    curTicks = DateTime.Now.Ticks;
-                    Thread.Sleep(5);
+                    Thread.Sleep(30);
 
                     if(movement != Direction.None) {
-                        inc = (float)(30.0 * (curTicks - lastTicks) / 30000000.0);
                         lock(galaxy) {
-                            if((movement & Direction.Up) == Direction.Up) galaxy.Offset.Y -= inc;
-                            if((movement & Direction.Down) == Direction.Down) galaxy.Offset.Y += inc;
-                            if((movement & Direction.Left) == Direction.Left) galaxy.Offset.X -= inc;
-                            if((movement & Direction.Right) == Direction.Right) galaxy.Offset.X += inc;
+                            if((movement & Direction.Left) == Direction.Left) galaxy.Offset.X -= 1;
+                            if((movement & Direction.Right) == Direction.Right) galaxy.Offset.X += 1;
+                            if((movement & Direction.Up) == Direction.Up) galaxy.Offset.Y -= 1;
+                            if((movement & Direction.Down) == Direction.Down) galaxy.Offset.Y += 1;
                         }
 
                         this.Invalidate();
                     }
-                    lastTicks = curTicks;
                 }
             });
+
+            //Task.Run(() => {
+            //    long curTicks;
+            //    float inc;
+
+            //    while(true) {
+            //        curTicks = DateTime.Now.Ticks;
+            //        Thread.Sleep(30);
+
+            //        if(movement != Direction.None) {
+            //            inc = 1;// (float)(30.0 * (curTicks - lastTicks) / 30000000.0);
+            //            //int sx = 0;
+            //            //int sy = 0;
+
+            //            lock(galaxy) {
+            //                if((movement & Direction.Left) == Direction.Left) galaxy.Offset.X -= inc;
+            //                if((movement & Direction.Right) == Direction.Right) galaxy.Offset.X += inc;
+            //                if((movement & Direction.Up) == Direction.Up) galaxy.Offset.Y -= inc;
+            //                if((movement & Direction.Down) == Direction.Down) galaxy.Offset.Y += inc;
+
+            //                // This "almost" fixes the freaking diagonal wobbling
+            //                //  But when implemented, switching diagonal directions, the galaxy rapidly jumps to a previous
+            //                //  location before stabilizing... WTF?
+
+            //                //if((movement & Direction.Left) == Direction.Left) { galaxy.Offset.X -= inc; sx = -1; };
+            //                //if((movement & Direction.Right) == Direction.Right) { galaxy.Offset.X += inc; sx = 1; };
+            //                //if((movement & Direction.Up) == Direction.Up) { galaxy.Offset.Y -= inc; sy = -1; };
+            //                //if((movement & Direction.Down) == Direction.Down) { galaxy.Offset.Y += inc; sy = 1; };
+
+            //                //bool h = (movement & Direction.Left) == Direction.Left || (movement & Direction.Right) == Direction.Right;
+            //                //bool v = (movement & Direction.Up) == Direction.Up || (movement & Direction.Down) == Direction.Down;
+
+            //                //if(h & v) {
+            //                //    float fpx = Math.Abs(galaxy.Offset.X) % 1.0f;
+            //                //    float fpy = Math.Abs(galaxy.Offset.Y) % 1.0f;
+            //                //    float fpm = Math.Max(fpx, fpy);
+
+            //                //    galaxy.Offset.X = (int)galaxy.Offset.X + fpm * sx;
+            //                //    galaxy.Offset.Y = (int)galaxy.Offset.Y + fpm * sy;
+            //                //}
+            //            }
+
+            //            this.Invalidate();
+            //        }
+            //        lastTicks = curTicks;
+            //    }
+            //});
         }
 
         private void InitUI() {
