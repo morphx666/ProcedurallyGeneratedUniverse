@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyVersion>2023.3.24.112</AssemblyVersion>
+    <FileVersion>2023.3.24.112</FileVersion>
+    <BaseOutputPath>..\</BaseOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProcedurallyGeneratedUniverse\ProcedurallyGeneratedUniverse.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Eto.Platform.Gtk" Version="2.7.3" />
+  </ItemGroup>
+	
+</Project>

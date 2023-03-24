@@ -1,19 +1,14 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2020.1.31.402</AssemblyVersion>
-    <FileVersion>2020.1.31.402</FileVersion>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyVersion>2023.3.24.135</AssemblyVersion>
+    <FileVersion>2023.3.24.135</FileVersion>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\Release\</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\Release\</OutputPath>
-  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Eto.Forms" Version="2.7.3" />
+    <PackageReference Include="Eto.Serialization.Json" Version="2.7.3" />
+  </ItemGroup>
 
 </Project>

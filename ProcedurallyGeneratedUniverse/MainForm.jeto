@@ -1,0 +1,18 @@
+﻿{
+	"$type": "Form",
+	"Title": "Procedurally Generated Universe",
+	"BackgroundColor": "#333333",
+	"ClientSize": "800, 600",
+	"Padding": "0",
+	"Content": {
+		"$type": "DynamicLayout",
+		"Rows": [
+			{	
+				"$type": "Drawable",
+				"$name": "Canvas",
+				"CanFocus": "true",
+				"BackgroundColor": "Black"
+			}
+		]
+	}
+}

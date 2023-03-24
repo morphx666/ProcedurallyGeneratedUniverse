@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <AssemblyVersion>2023.3.24.24</AssemblyVersion>
+    <FileVersion>2023.3.24.24</FileVersion>
+    <BaseOutputPath>..\</BaseOutputPath>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\ProcedurallyGeneratedUniverse\ProcedurallyGeneratedUniverse.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Eto.Platform.Wpf" Version="2.7.3" />
+  </ItemGroup>
+
+</Project>
